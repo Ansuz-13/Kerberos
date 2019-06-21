@@ -1,0 +1,13 @@
+{
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "core",
+      "Modules\\": "modules"
+    }
+  },
+  "require-dev": {
+
+  }
+}

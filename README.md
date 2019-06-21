@@ -1,3 +1,3 @@
-# Kerberos
+# The A Framework
 
-Welcome to the future
+Mise en place d'un framework permettant le développement d'application par module totalement indépendant.
