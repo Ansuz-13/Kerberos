@@ -1,5 +1,7 @@
 <?php
+
 namespace Core;
+
 use Core\config\Modules;
 use Core\event\BaseEventListener;
 use Core\interfaces\Event;
