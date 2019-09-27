@@ -23,9 +23,9 @@ final class BaseEventListener implements EventListener
 
     public function emit(Event $event) : void
     {
-        foreach ($this->events as $event) {
-            $validator = $event['validator'];
-            $callback = $event['callback'];
+        foreach ($this->events as $listener) {
+            $validator = $listener['validator'];
+            $callback = $listener['callback'];
 
             if ($validator->isValid($event)) {
                 ($callback)($event);

@@ -6,7 +6,7 @@ use Modules\administration\Administration;
 class Modules {
     function listModules() {
         return [
-            'admin' => function ($text) { return new Administration($text);}
+            'security' => function ($text) { return new Administration($text);},
         ];
     }
 }

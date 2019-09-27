@@ -21,10 +21,10 @@ class Core
         $this->modules  = new Modules();
     }
 
-    public function launch(): void {
+    public function launch($modules): void {
         $usableModules = $this->initModules(
             $this->listActiveModules(
-                $this->modules->listModules()
+               array_merge($this->modules->listModules(), $modules)
             )
         );
 
