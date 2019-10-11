@@ -7,6 +7,6 @@ final class SimpleActiveModules implements ActiveModules
 {
     public function names(): array
     {
-        return [ 'admin' ];
+        return [ 'http router' ];
     }
 }

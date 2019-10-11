@@ -16,6 +16,6 @@ final class HttpRequestEvent implements Event
 
     public function value(string $name)
     {
-        return 'http request event';
+        return 'http request';
     }
 }

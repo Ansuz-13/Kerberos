@@ -2,13 +2,14 @@
 
 namespace Demos\Perseus\config;
 
-use Modules\administration\Administration;
+use Modules\HttpRouter\HttpRouter;
 
-class Modules {
-    public function listModules() {
+class Modules
+{
+    public function listModules()
+    {
         return [
-            'PerseusSecurity' => function ($text) { return $text;},
-            'admin'           => function () { return new Administration('test demo admin'); },
+            'http router' => function () { return new HttpRouter(); },
         ];
     }
 }
