@@ -11,4 +11,4 @@ $core = new Core(new SimpleActiveModules());
 
 $core->launch((new Modules())->listModules());
 
-$core->handle(new HttpRequestEvent());
+$core->handle(new HttpRequestEvent()); //
