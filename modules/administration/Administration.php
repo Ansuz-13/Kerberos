@@ -1,5 +1,7 @@
 <?php
+
 namespace Modules\administration;
+
 use Core\interfaces\EventListener;
 use Core\interfaces\Module;
 use Core\interfaces\ServiceProvider;
