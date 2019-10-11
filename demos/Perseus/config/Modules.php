@@ -1,11 +1,15 @@
 <?php
-namespace Perseus\config;
 
+namespace Demos\Perseus\config;
 
-class Modules {
-    public function listModules() {
+use Modules\HttpRouter\HttpRouter;
+
+class Modules
+{
+    public function listModules()
+    {
         return [
-            'PerseusSecurity' => function ($text) { return $text;},
+            'http router' => function () { return new HttpRouter(); },
         ];
     }
 }

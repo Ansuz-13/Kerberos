@@ -4,24 +4,36 @@ namespace Core;
 
 use Core\config\Modules;
 use Core\event\BaseEventListener;
+use Core\interfaces\ActiveModules;
 use Core\interfaces\Event;
 use Core\interfaces\EventListener;
 use Core\interfaces\Module;
 
 class Core
 {
+    /** @var ActiveModules */
+    private $activeModules;
     /** @var EventListener */
     private $listener;
     /** @var Modules */
     private $modules;
 
-    public function __construct()
+    /**
+     * @param ActiveModules $activeModules
+     */
+    public function __construct(ActiveModules $activeModules)
     {
+        $this->activeModules = $activeModules;
         $this->listener = new BaseEventListener();
         $this->modules  = new Modules();
     }
 
-    public function launch($modules): void {
+    /**
+     * Launches the application.
+     *
+     * @param array $modules
+     */
+    public function launch(array $modules): void {
         $usableModules = $this->initModules(
             $this->listActiveModules(
                array_merge($this->modules->listModules(), $modules)
@@ -33,6 +45,11 @@ class Core
         }
     }
 
+    /**
+     * Handles an event.
+     *
+     * @param Event $event
+     */
     public function handle(Event $event): void
     {
         $this->listener->emit($event);
@@ -40,21 +57,9 @@ class Core
 
     private function listActiveModules(array $modules): array
     {
-        // $connexion = new Bdd();
-        // $pdo = $connexion->connexion();
-        // $connexion->exec(
-        //     function () use ($pdo) {
-        //         // Préparation de la requete
-        //         $pdo->prepare("CALL listActiveModules");
-        //         $request = $pdo->execute();
-        //         return $pdo->fetchAll(\PDO::FETCH_ASSOC);
-        //     }
-        // );
-        $actives = [ 'toto', 'admin' ];
-
         return array_filter(
             $modules,
-            function (string $name) use ($actives) { return in_array($name, $actives); },
+            function (string $name) { return in_array($name, $this->activeModules->names()); },
             ARRAY_FILTER_USE_KEY
         );
     }
